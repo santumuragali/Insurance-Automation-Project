@@ -4,18 +4,26 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.NoSuchElementException;
 import java.util.ResourceBundle;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
@@ -37,7 +45,7 @@ public abstract class BaseTest {
 	public static ResourceBundle globalProperties;
 	public static String Webdriveropsurl;
 	public String externalsheet;
-	protected WebDriver driver;
+	protected static  WebDriver driver;
 	public ExtentReports extent;
 	public static ExtentTest extendReporterLogger;
 	public String testname = "SanchayPlus";
@@ -107,7 +115,9 @@ public abstract class BaseTest {
 
 	public void setBrowser(String browserName) {
 		if ("chrome".equalsIgnoreCase(browserName)) {
-			driver = new ChromeDriver();
+		    ChromeOptions options = new ChromeOptions();
+		    options.addArguments("--disable-notifications");
+			driver = new ChromeDriver(options);
 			logger.info("Chrome browser launched.");
 		} else if ("firefox".equalsIgnoreCase(browserName)) {
 			driver = new FirefoxDriver();
@@ -155,4 +165,6 @@ public abstract class BaseTest {
 	public static String getOpsUrl() {
 		return Webdriveropsurl;
 	}
+	
+	
 }

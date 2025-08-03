@@ -13,5 +13,8 @@ public class HomePage extends BasePage{
 	public void launchBasePage() {
 		launchOpsUrl();
 	}
+	public void handleAlert() {
+		alert("dismiss");
+	}
 
 }
