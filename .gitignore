@@ -1,0 +1,25 @@
+# Maven target directory
+/target/
+
+# Test output and reports
+test-output/
+*.log
+logs/
+Log/
+
+# Compiled class files
+*.class
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE files
+*.iml
+.idea/
+*.classpath
+*.project
+*.settings/
+
+# ExtentReports and screenshots
+/test-output/ExteReport/
