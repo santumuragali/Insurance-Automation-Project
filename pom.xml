@@ -47,4 +47,17 @@
       <version>5.1.1</version>
     </dependency>
   </dependencies>
+  <build>
+  <plugins>
+    <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-compiler-plugin</artifactId>
+      <version>3.8.1</version> <!-- or latest version -->
+      <configuration>
+        <source>17</source> <!-- Change to 11 or 17 -->
+        <target>17</target>
+      </configuration>
+    </plugin>
+  </plugins>
+</build>
 </project>
